@@ -1,0 +1,63 @@
+.main{
+    &__blog{
+        @media (max-width:721px) {
+            align-items: center;
+        }
+        &-top{
+            &-categories{
+                gap: 16px;
+                @media (max-width:1140px) {
+                    gap: 50px;
+                }
+            }
+        }
+        &-img{
+            width: 100%;
+        }
+        &-images{
+            cursor: pointer;
+            position: relative;
+            &-data,
+            &-eyes,
+            &-category{
+                position: absolute;
+                display: flex;
+                align-items: center;
+                border-radius: 60px;
+                padding: 8px 12px;
+            }
+            &-category{
+                top: 16px;
+                left: 16px;
+                top: 16px;
+                left: 16px;
+                background: $green;
+                gap: 8px;
+            }
+            &-data{
+                bottom: 16px;
+                left: 94px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 0.5px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(50px);
+                border-radius: 100px;
+                gap: 6px;
+            }
+            &-eyes{
+                bottom: 16px;
+                left: 16px;
+                background: rgba(255, 255, 255, 0.1);
+                border: 0.5px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(50px);
+                border-radius: 1000px;
+                gap: 4px;
+            }
+        }
+        &-item{
+            height: 412px;
+        }
+        &-text{
+            text-align: center;
+        }
+    }
+}

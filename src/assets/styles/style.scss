@@ -1,0 +1,9 @@
+@import "@/assets/styles/common/common.scss";
+@import "@/assets/styles/common/grid.scss";
+@import "@/assets/styles/common/root.scss";
+@import "components/main.scss";
+@import "components/header.scss";
+
+@import 'pages/Home.scss',
+        'pages/Products.scss',
+        'pages/Blog.scss';

@@ -1,0 +1,15 @@
+.main{
+    &__product{
+        @media(max-width:991px){
+            align-items: center;
+            margin: 0;
+        }
+        &-img{
+            width: 100%;
+        }
+        &-text{
+            display: flex;
+            align-items: center;
+        }
+    }
+}
