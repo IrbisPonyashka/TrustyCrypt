@@ -4,6 +4,17 @@
             align-items: center;
             margin: 0;
         }
+        &-title{
+            @media(max-width:720px){
+                font-size: 16px;
+            }
+        }
+        &-descr{
+            
+            @media(max-width:720px){
+                font-size: 14px;
+            }
+        }
         &-img{
             width: 100%;
         }

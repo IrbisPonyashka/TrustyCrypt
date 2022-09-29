@@ -87,7 +87,7 @@ export default {
             burgerBtn:'burger',
             loc:'http://localhost:8080/#',
             list: [
-                {url:'/',link:'Home',name:'Главня',class:'header__nav-link inscr'},
+                {url:'/',link:'Home',name:'Главня',class:'header__nav-link inscr '},
                 {url:'/Products',link:'Products',name:'Продукты',class:'header__nav-link inscr'},
                 {url:'/Blog',link:'Blog',name:'Блог',class:'header__nav-link inscr'},
                 {url:'/Contacts',link:'Contacts',name:'Контакты',class:'header__nav-link inscr'}

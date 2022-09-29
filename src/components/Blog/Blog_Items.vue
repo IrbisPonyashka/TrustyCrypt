@@ -1,8 +1,10 @@
 <template>
-    <div class="main__blog-items pages__style-items">
-      <BlogItem
-      :articles="filterArticles"
-      />
+    <div class="main__blog-box pages__style-box">
+      <div class="main__blog-items pages__style-items">
+        <BlogItem
+        :articles="filterArticles"
+        />
+      </div>
     </div>
           <ul class="main__blog-slide pages__style-slide">
             <li class="main__blog-nums pages__style-nums active">1</li>

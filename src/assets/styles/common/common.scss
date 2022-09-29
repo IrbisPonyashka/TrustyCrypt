@@ -98,51 +98,55 @@ $white-2:#D4D4D4;
             width: 1300px;
             // min-width: 600px;
             // width: 100%;
-            height: 810px;
+            height: 820px;
             margin: 0 auto;
             padding: 0 auto;
             position: relative;
             overflow: hidden;
             @media(max-width:1399px){
                 width: 1150px;
+                // height: 790px;
             }
             @media(max-width:1299px){
                 width: 1000px;
             }
             @media(max-width:992px){
                 width: 900px;
+                height: 800px;
             }
             @media(max-width:767px){
                 width: 700px;
             }
             @media(max-width:720px){
-                width: 400px;
+                width: 600px;
             }
             @media(max-width:420px){
-                width: 300px;
+                width: 600px;
             }
         }
         &-items{
             width: 100%;
             position: absolute;
-            top: 0px;
+            top: 0%;
             left: 0px;
             display: grid;
             gap: 32px;
+            // transform: translateX(30%);
             grid-template-columns: repeat(3,1fr);
             transition-duration: 1500ms;
             @media(max-width:991px){
                 grid-template-columns: repeat(2,1fr);
                 gap: 18px;
             }
-            @media(max-width:720px){
-                grid-template-columns: repeat(1,1fr);
-                gap: 18px;
-            }
+            // @media(max-width:720px){
+            //     grid-template-columns: repeat(1,1fr);
+            //     gap: 18px;
+            // }
         }
         &-item{
             max-width: 412px;
             width: 100%;
+            height: 390px;
             padding: 16px;
             display: flex;
             flex-direction: column;
@@ -150,6 +154,10 @@ $white-2:#D4D4D4;
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
+            @media(max-width:720px){
+                height: 290px;
+                padding: 10px;
+            }
         }
         &-sliderbox{
             display: flex;
