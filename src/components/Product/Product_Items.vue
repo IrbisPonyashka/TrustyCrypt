@@ -58,7 +58,7 @@ export default {
                 event.target.classList.add('active');
                 console.log(window.innerWidth);
             if(window.innerWidth > 996){
-                const offset = item.clientHeight*2+64;
+                const offset = item.clientHeight*2+68;
                 if(event.target.innerHTML == '1'){
                     items.style.transform = 'translateY(0%)';
                 }else if(event.target.innerHTML == '2'){
@@ -66,15 +66,14 @@ export default {
                 }else if(event.target.innerHTML == '3'){
                     items.style.transform = `translateY(-${offset*2}px)`;
                 }else if(event.target.innerHTML == '4'){
-                    items.style.transform = `translateY(-${offset*3+5}px)`;
+                    items.style.transform = `translateY(-${offset*3}px)`;
                 }else if(event.target.innerHTML == '5'){
-                    items.style.transform = `translateY(-${offset*4+10}px)`;
+                    items.style.transform = `translateY(-${offset*4}px)`;
                 }else if(event.target.innerHTML == '6'){
-                    items.style.transform = `translateY(-${offset*5+15}px)`;
+                    items.style.transform = `translateY(-${offset*5}px)`;
                 }
-                console.log(offset);
-            }
-            else if(window.innerHeight <= 996){
+                console.log('<996');
+            }else if(window.innerHeight <= 996){
                 const offset = item.clientHeight*2+40;
                 if(event.target.innerHTML == '1'){
                     items.style.transform = 'translateY(0%)';
@@ -97,6 +96,7 @@ export default {
                 }else if(event.target.innerHTML == '10'){
                     items.style.transform = `translateY(-${offset*9}px)`;
                 }
+                console.log('>996');
             }
         },
         countItems(length){

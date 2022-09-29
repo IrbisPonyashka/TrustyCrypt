@@ -5,18 +5,27 @@
             margin: 0;
         }
         &-title{
+            font-size: 20px;
             @media(max-width:720px){
                 font-size: 16px;
+                padding: 0px 15px;
             }
         }
         &-descr{
-            
+            font-size: 15px;
             @media(max-width:720px){
                 font-size: 14px;
+                padding: 0px 15px;
             }
         }
+        &-about{
+            color: #00ffd9;
+        }
         &-img{
+            max-width: 380px;
             width: 100%;
+            max-height: 215px;
+            height: 100%;
         }
         &-text{
             display: flex;
