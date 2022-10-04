@@ -7,7 +7,6 @@ import { store } from '@/store/store'
 import routers from '@/router/routes.js'
 import db from '@/store/db'
 
-// import '@/store/storage.js'
 
 createApp(App).use(routers).use(store).mount('#app')
 

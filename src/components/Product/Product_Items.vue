@@ -9,26 +9,33 @@
           <ul class="main__product-slide pages__style-slide" 
             @click="getSliding" 
             v-show="filterProducts.length >= 0"
-            v-if="this.device < 996"
-            >
-            <li v-show="filterProducts.length > 0" ><p class="main__product-nums pages__style-nums active">1</p></li>
-            <li v-show="filterProducts.length > 4" ><p class="main__product-nums pages__style-nums">2</p></li>
-            <li v-show="filterProducts.length > 8" ><p class="main__product-nums pages__style-nums">3</p></li>
-            <li v-show="filterProducts.length > 12" ><p class="main__product-nums pages__style-nums">4</p></li>
-            <li v-show="filterProducts.length > 16" ><p class="main__product-nums pages__style-nums">5</p></li>
-            <li v-show="filterProducts.length > 20" ><p class="main__product-nums pages__style-nums">6</p></li>
-            <li v-show="filterProducts.length > 24" ><p class="main__product-nums pages__style-nums">7</p></li>
-            <li v-show="filterProducts.length > 28" ><p class="main__product-nums pages__style-nums">8</p></li>
-            <li v-show="filterProducts.length > 32" ><p class="main__product-nums pages__style-nums">9</p></li>
-            <li v-show="filterProducts.length > 36" ><p class="main__product-nums pages__style-nums">10</p></li>
+            v-if="this.device < 540">
+                <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
+                <li v-for="n in this.offsetM()" :key="n">
+                    <p class="main__product-nums pages__style-nums">{{ n }}</p>
+                </li>
+                <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
-          <ul @click="getSliding" v-show="filterProducts.length >= 0" class="main__product-slide pages__style-slide"  v-if="this.device > 996">
-            <li v-show="filterProducts.length > 0" ><p class="main__product-nums pages__style-nums active">1</p></li>
-            <li v-show="filterProducts.length > 6" ><p class="main__product-nums pages__style-nums">2</p></li>
-            <li v-show="filterProducts.length > 12" ><p class="main__product-nums pages__style-nums">3</p></li>
-            <li v-show="filterProducts.length > 24" ><p class="main__product-nums pages__style-nums">4</p></li>
-            <li v-show="filterProducts.length > 30" ><p class="main__product-nums pages__style-nums">5</p></li>
-            <li v-show="filterProducts.length >= 36" ><p class="main__product-nums pages__style-nums">6</p></li>
+          <ul class="main__product-slide pages__style-slide" 
+            @click="getSliding" 
+            v-show="filterProducts.length >= 0"
+            v-if="this.device < 996 && this.device > 540">
+                <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
+                <li v-for="n in this.offsetN()" :key="n">
+                    <p class="main__product-nums pages__style-nums">{{ n }}</p>
+                </li>
+                <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
+          </ul>
+          <ul 
+            @click="getSliding" 
+            v-show="filterProducts.length >= 0" 
+            class="main__product-slide pages__style-slide"  
+            v-if="this.device > 996">
+                <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
+                <li v-for="n in this.offsetD()" :key="n">
+                    <p :class="n.class">{{ n.offset }}</p>
+                </li>
+                <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
 </template>
 
@@ -37,6 +44,8 @@
 import ProductItem from '@/components/Product/Product_Item.vue'
 import {products} from '@/store/db.js'
 
+import {getHeight, getNumsD, getNumsN, getNumsM} from '@/store/storage.js'
+
 
 export default {
     components:{
@@ -44,6 +53,11 @@ export default {
     },
     data(){
         return {
+            offsetD:getNumsD,
+            offsetN:getNumsN,
+            offsetM:getNumsM,
+            status:false,
+            interval:4,
             device: window.innerWidth,
             SortProducts:[...products],
             dots:[]
@@ -54,50 +68,40 @@ export default {
             const items = document.querySelector('.pages__style-items');
             const item = document.querySelector('.pages__style-item');
             const nums = document.querySelectorAll('.pages__style-nums');
-                nums.forEach(el => el.classList.remove('active'));
+                if(event.target.__vnode.type == 'p'){
+                let offset = 0;
+                    if(window.innerWidth > 996){
+                        offset += item.clientHeight*2+68;
+                    }else if(window.innerWidth < 996 && window.innerWidth > 540){
+                        offset += (item.clientHeight+20)*2;
+                    }else if(window.innerWidth <= 540){
+                        offset += (item.clientHeight+20)*3;
+                    }
+                nums.forEach(el =>  el.classList.remove('active'));
                 event.target.classList.add('active');
-                console.log(window.innerWidth);
-            if(window.innerWidth > 996){
-                const offset = item.clientHeight*2+68;
-                if(event.target.innerHTML == '1'){
-                    items.style.transform = 'translateY(0%)';
-                }else if(event.target.innerHTML == '2'){
-                    items.style.transform = `translateY(-${offset}px)`;
-                }else if(event.target.innerHTML == '3'){
-                    items.style.transform = `translateY(-${offset*2}px)`;
-                }else if(event.target.innerHTML == '4'){
-                    items.style.transform = `translateY(-${offset*3}px)`;
-                }else if(event.target.innerHTML == '5'){
-                    items.style.transform = `translateY(-${offset*4}px)`;
-                }else if(event.target.innerHTML == '6'){
-                    items.style.transform = `translateY(-${offset*5}px)`;
-                }
-                console.log('<996');
-            }else if(window.innerHeight <= 996){
-                const offset = item.clientHeight*2+40;
-                if(event.target.innerHTML == '1'){
-                    items.style.transform = 'translateY(0%)';
-                }else if(event.target.innerHTML == '2'){
-                    items.style.transform = `translateY(-${offset}px)`;
-                }else if(event.target.innerHTML == '3'){
-                    items.style.transform = `translateY(-${offset*2}px)`;
-                }else if(event.target.innerHTML == '4'){
-                    items.style.transform = `translateY(-${offset*3}px)`;
-                }else if(event.target.innerHTML == '5'){
-                    items.style.transform = `translateY(-${offset*4}px)`;
-                }else if(event.target.innerHTML == '6'){
-                    items.style.transform = `translateY(-${offset*5}px)`;
-                }else if(event.target.innerHTML == '7'){
-                    items.style.transform = `translateY(-${offset*6}px)`;
-                }else if(event.target.innerHTML == '8'){
-                    items.style.transform = `translateY(-${offset*7}px)`;
-                }else if(event.target.innerHTML == '9'){
-                    items.style.transform = `translateY(-${offset*8}px)`;
-                }else if(event.target.innerHTML == '10'){
-                    items.style.transform = `translateY(-${offset*9}px)`;
-                }
-                console.log('>996');
-            }
+                items.style.transform = `translateY(${getHeight(event.target.innerHTML,offset)}px)`
+                }else if(event.target.__vnode.type == 'img'){
+                        if(event.target.classList[2] == 'next'){
+                            this.interval = nums[nums.length-1].classList[2] == 'visible' ? this.interval : this.interval += 4;
+                            for(let i =0;i<nums.length;i++){
+                                if(nums[i].innerHTML <= this.interval && nums[i].innerHTML > this.interval-4){
+                                    nums[i].classList.add('visible');
+                                }else{
+                                    nums[i].classList.remove('visible');
+                                }
+                            }
+                        }else if(event.target.classList[2] == 'prev'){
+                            this.interval = this.interval ==4 ? this.interval=4 : this.interval -= 4 ;
+                            for(let i =0;i<nums.length;i++){
+                                if(nums[i].innerHTML <= this.interval && nums[i].innerHTML > this.interval-4){
+                                    nums[i].classList.add('visible');
+                                }else{
+                                    nums[i].classList.remove('visible');
+                                }
+                            }
+                        }
+                    }
+                
         },
         countItems(length){
             if(length > 6){

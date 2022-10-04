@@ -113,10 +113,9 @@ $white-2:#D4D4D4;
             @media(max-width:720px){
                 width: 600px;
                 height: 600px;
-                // height: 920px;
             }
-            @media(max-width:420px){
-                width: 600px;
+            @media(max-width:540px){
+                height: 1000px;
             }
         }
         &-items{
@@ -126,6 +125,8 @@ $white-2:#D4D4D4;
             left: 0px;
             display: grid;
             gap: 32px;
+            margin: 0 auto;
+            padding: 0 auto;
             // transform: translateX(30%);
             grid-template-columns: repeat(3,1fr);
             transition-duration: 1500ms;
@@ -133,10 +134,11 @@ $white-2:#D4D4D4;
                 grid-template-columns: repeat(2,1fr);
                 gap: 18px;
             }
-            // @media(max-width:720px){
-            //     grid-template-columns: repeat(1,1fr);
-            //     gap: 18px;
-            // }
+            @media(max-width:540px){
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
         }
         &-item{
             max-width: 410px;
@@ -145,7 +147,6 @@ $white-2:#D4D4D4;
             padding: 12px;
             display: flex;
             flex-direction: column;
-            
             position: relative;
             gap: 12px;
             background: rgba(255, 255, 255, 0.02);
@@ -153,9 +154,14 @@ $white-2:#D4D4D4;
             border-radius: 16px;
             @media(max-width:720px){
                 height: 290px;
-                padding: 0px;
+                padding: 0px 0px 5px 0px;
                 overflow: hidden;
                 gap: 10px;
+            }
+            @media(max-width:540px){
+                max-width: 350px;
+                width: 100%;
+                height: 320px;
             }
         }
         &-sliderbox{
@@ -173,8 +179,11 @@ $white-2:#D4D4D4;
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             padding: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             @media(max-width:1199px){
-                display: flex;
+                flex-direction: row;
             }
         }
         &-nums {
@@ -183,10 +192,29 @@ $white-2:#D4D4D4;
             padding: 8px 19px;
             font-family: 'Inter';
             color: $white;
+            display: none;
+            @media(max-width:540px){
+                font-size: 15px;
+                padding: 6px 17px;
+            }
         }
         &-nums.active{
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
+        }
+        &-nums.visible{
+            display: block;
+        }
+        &-arrow{
+            padding: 8px 19px;
+            border-radius: 8px;
+            transition: all 0.5s ease;
+            @media(max-width:1199px){
+                transform: rotate(270deg);
+            }
+            &:hover{
+                background: rgba(255, 255, 255, 0.1);
+            }
         }
         &-bottom{
             margin-top: 60px;
