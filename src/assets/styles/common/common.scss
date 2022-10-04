@@ -156,7 +156,7 @@ $white-2:#D4D4D4;
                 height: 290px;
                 padding: 0px 0px 5px 0px;
                 overflow: hidden;
-                gap: 10px;
+                gap: 5px;
             }
             @media(max-width:540px){
                 max-width: 350px;
@@ -193,6 +193,7 @@ $white-2:#D4D4D4;
             font-family: 'Inter';
             color: $white;
             display: none;
+            // cursor: pointer;
             @media(max-width:540px){
                 font-size: 15px;
                 padding: 6px 17px;

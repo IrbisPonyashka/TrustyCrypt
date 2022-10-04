@@ -12,7 +12,7 @@
             v-if="this.device < 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
                 <li v-for="n in this.offsetM()" :key="n">
-                    <p :class="n.class">{{ n.offset }}</p>
+                    <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
@@ -22,7 +22,7 @@
             v-if="this.device < 996 && this.device > 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
                 <li v-for="n in this.offsetN()" :key="n">
-                    <p :class="n.class">{{ n.offset }}</p>
+                    <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
@@ -33,7 +33,7 @@
             v-if="this.device > 996">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
                 <li v-for="n in this.offsetD()" :key="n">
-                    <p :class="n.class">{{ n.offset }}</p>
+                    <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
@@ -45,8 +45,6 @@ import ProductItem from '@/components/Product/Product_Item.vue'
 import {products} from '@/store/db.js'
 
 import {getHeight, getNumsD, getNumsN, getNumsM} from '@/store/storage.js'
-
-console.log(getNumsN())
 
 export default {
     components:{
@@ -66,10 +64,11 @@ export default {
     },
     methods:{
         getSliding(){
+            alert(event.target.__vnode.type)
             const items = document.querySelector('.pages__style-items');
             const item = document.querySelector('.pages__style-item');
             const nums = document.querySelectorAll('.pages__style-nums');
-                if(event.target.__vnode.type == 'p'){
+                if(event.target.__vnode.type == 'p' || event.target.__vnode.type == 'a'){
                 let offset = 0;
                     if(window.innerWidth > 996){
                         offset += item.clientHeight*2+68;
