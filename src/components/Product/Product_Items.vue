@@ -12,7 +12,7 @@
             v-if="this.device < 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
                 <li v-for="n in this.offsetM()" :key="n">
-                    <p class="main__product-nums pages__style-nums">{{ n }}</p>
+                    <p :class="n.class">{{ n.offset }}</p>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
@@ -22,7 +22,7 @@
             v-if="this.device < 996 && this.device > 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
                 <li v-for="n in this.offsetN()" :key="n">
-                    <p class="main__product-nums pages__style-nums">{{ n }}</p>
+                    <p :class="n.class">{{ n.offset }}</p>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
           </ul>
@@ -46,6 +46,7 @@ import {products} from '@/store/db.js'
 
 import {getHeight, getNumsD, getNumsN, getNumsM} from '@/store/storage.js'
 
+console.log(getNumsN())
 
 export default {
     components:{
