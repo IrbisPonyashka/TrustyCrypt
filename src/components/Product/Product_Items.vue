@@ -64,7 +64,6 @@ export default {
     },
     methods:{
         getSliding(){
-            alert(event.target.__vnode.type)
             const items = document.querySelector('.pages__style-items');
             const item = document.querySelector('.pages__style-item');
             const nums = document.querySelectorAll('.pages__style-nums');

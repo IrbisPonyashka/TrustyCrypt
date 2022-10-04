@@ -19,6 +19,7 @@ export function getNumsD(){
                 })
             }
     }
+    nums[0].class = 'main__product-nums pages__style-nums visible active'
     return nums
 }
 
@@ -34,6 +35,7 @@ export function getNumsN(){
             })
         }
     }
+    nums[0].class = 'main__product-nums pages__style-nums visible active'
     return nums
 }
 
@@ -49,5 +51,6 @@ export function getNumsM(){
             })
         }
     }
+    nums[0].class = 'main__product-nums pages__style-nums visible active'
     return nums
 }
