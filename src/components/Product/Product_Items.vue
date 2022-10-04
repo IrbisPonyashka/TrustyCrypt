@@ -7,7 +7,7 @@
         </div>
     </div>
           <ul class="main__product-slide pages__style-slide" 
-            @click="getSliding" 
+            @mouseover="getSliding"
             v-show="filterProducts.length >= 0"
             v-if="this.device < 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
