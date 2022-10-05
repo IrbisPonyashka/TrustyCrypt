@@ -7,7 +7,7 @@
         </div>
     </div>
           <ul class="main__product-slide pages__style-slide" 
-            @mouseover="getSliding"
+            @click="getSliding"
             v-show="filterProducts.length >= 0"
             v-if="this.device < 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
@@ -67,7 +67,7 @@ export default {
             const items = document.querySelector('.pages__style-items');
             const item = document.querySelector('.pages__style-item');
             const nums = document.querySelectorAll('.pages__style-nums');
-                if(event.target.__vnode.type == 'p' || event.target.__vnode.type == 'a'){
+                if(event.target.nodeName == 'P' ||event.target.nodeName == 'A'){
                 let offset = 0;
                     if(window.innerWidth > 996){
                         offset += item.clientHeight*2+68;
@@ -79,7 +79,7 @@ export default {
                 nums.forEach(el =>  el.classList.remove('active'));
                 event.target.classList.add('active');
                 items.style.transform = `translateY(${getHeight(event.target.innerHTML,offset)}px)`
-                }else if(event.target.__vnode.type == 'img'){
+                }else if(event.target.nodeName == 'IMG'){
                         if(event.target.classList[2] == 'next'){
                             this.interval = nums[nums.length-1].classList[2] == 'visible' ? this.interval : this.interval += 4;
                             for(let i =0;i<nums.length;i++){
