@@ -1,9 +1,11 @@
 import { createStore } from "vuex"
 
+
 export const store = createStore({
     state:{
         status: 'Все категории',
-        type:'Все статьи'
+        type:'Все статьи',
+        products:[]
     },
     mutations:{
         getChooseCategory(state,payload){
@@ -25,10 +27,9 @@ export const store = createStore({
             }else{
                 state.type = 'Все статьи'
             }
-        }
+        },
     },
     actions:{
-
     },
     getters:{
         getChooseCategory(state){
@@ -36,6 +37,9 @@ export const store = createStore({
         },
         getType(state){
             return state.type
+        },
+        getProducts(state){
+            return state.products
         }
     }
 })

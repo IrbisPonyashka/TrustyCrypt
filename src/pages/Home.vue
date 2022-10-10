@@ -14,7 +14,7 @@
 <script>
 
 import HomeAdvenced from "../components/Home/Advanced.vue"
-import Generation from "../components/Home/Generation.vue"
+import Generation from "../components/Home/v-generation.vue"
 import Instruments from "../components/Home/Instruments.vue"
 import Info from "../components/Home/Info.vue"
 

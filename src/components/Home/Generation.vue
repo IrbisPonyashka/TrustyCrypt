@@ -5,7 +5,6 @@
               <div class="1 main__generation-img-1 main__generation-img"></div>
               <div class="2 main__generation-img-2 main__generation-img"></div>
               <div class="3 main__generation-img-3 main__generation-img active"></div>
-              <!-- <img :src="require(`@/assets/images/Home/home__security-3.png`)" alt="" class="main__generation-img"> -->
           </div>
           <div class="main__generation-dots">
             <div class="main__generation-dot" v-for="dot in dots" :key="dot.id" @click="Slider(dot.id)">  

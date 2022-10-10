@@ -11,7 +11,7 @@
             v-show="filterProducts.length >= 0"
             v-if="this.device < 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
-                <li v-for="n in this.offsetM()" :key="n">
+                <li v-for="n in this.offsetM(filterProducts.length)" :key="n">
                     <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
@@ -21,7 +21,7 @@
             v-show="filterProducts.length >= 0"
             v-if="this.device < 996 && this.device > 540">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
-                <li v-for="n in this.offsetN()" :key="n">
+                <li v-for="n in this.offsetN(filterProducts.length)" :key="n">
                     <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
@@ -32,7 +32,7 @@
             class="main__product-slide pages__style-slide"  
             v-if="this.device > 996">
                 <img src="@/assets/images/SVG/Icons/topArrow.svg" alt="" class="main__product-arrow pages__style-arrow prev">
-                <li v-for="n in this.offsetD()" :key="n">
+                <li v-for="n in this.offsetD(filterProducts.length)" :key="n">
                     <a :class="n.class">{{ n.offset }}</a>
                 </li>
                 <img src="@/assets/images/SVG/Icons/bottomArrow.svg" alt="" class="main__product-arrow pages__style-arrow next">
@@ -58,7 +58,7 @@ export default {
             status:false,
             interval:4,
             device: window.innerWidth,
-            SortProducts:[...products],
+            getProdArr:[...products],
             dots:[]
       }
     },
@@ -108,18 +108,24 @@ export default {
                     id:1
                 })
             }
+        },
+    },
+    watch: {
+        getProdArr(array) {
+            localStorage.setItem("array", JSON.stringify(array));
         }
     },
     computed:{
         filterProducts(){
             if(this.$store.getters.getChooseCategory == '1'){
-                return this.SortProducts.filter(product => product.category == '1' );
+                return JSON.parse(localStorage.getItem("array")).filter(product => product.category == '1' );
             }else if(this.$store.getters.getChooseCategory == '2'){
-                return this.SortProducts.filter(product => product.category == '2' );
+                return JSON.parse(localStorage.getItem("array")).filter(product => product.category == '2' );
             }else if(this.$store.getters.getChooseCategory == '3'){
-                return this.SortProducts.filter(product => product.category == '3' );
+                return JSON.parse(localStorage.getItem("array")).filter(product => product.category == '3' );
             }else{
-                return this.SortProducts.sort((a, b) => a.id > b.id ? 1 : -1)
+                if (localStorage.array) return JSON.parse(localStorage.getItem("array")).sort((a, b) => a.id > b.id ? 1 : -1)
+                else return this.getProdArr.sort((a,b) => a.id > b.id ? 1 : -1 )
             }
         }
     }

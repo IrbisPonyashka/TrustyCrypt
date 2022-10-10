@@ -11,7 +11,7 @@ export function getNumsD(){
     let offset = 0;
     const nums = [];
     for(let i =0;i<=36;i++){
-            if(i == 6 || i == 12 || i == 18 || i == 24 || i == 30 || i == 36){
+            if(i < Math.ceil(36/6)){    
                 offset++
                 nums.push({
                     offset: offset,
@@ -23,11 +23,11 @@ export function getNumsD(){
     return nums
 }
 
-export function getNumsN(){
+export function getNumsN(sum){
     let offset = 0;
     const nums = [];
-    for(let i =0;i<=36;i++){
-        if(i == 4 || i == 8 || i == 12 || i == 16 || i == 20 || i == 24 || i == 28 || i == 32 || i == 36){
+    for(let i =0;i<=sum;i++){
+        if(i < Math.ceil(sum/4)){  
             offset++
             nums.push({
                 offset: offset,
@@ -39,11 +39,11 @@ export function getNumsN(){
     return nums
 }
 
-export function getNumsM(){
+export function getNumsM(sum){
     let offset = 0;
     const nums = [];
-    for(let i =0;i<=36;i++){
-        if(i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21 || i == 24 || i == 27 || i == 30 || i == 33 || i == 36){
+    for(let i =0;i<=sum;i++){
+        if(i < Math.ceil(sum/3)){  
             offset++
             nums.push({
                 offset: offset,
@@ -53,4 +53,17 @@ export function getNumsM(){
     }
     nums[0].class = 'main__product-nums pages__style-nums visible active'
     return nums
+}
+
+export function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
